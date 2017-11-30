@@ -2,13 +2,11 @@ import React from 'react';
 import { colors, Spacing, Text } from 'react-elemental';
 
 const Header = () => (
-  <Spacing
-    size="large"
+  <div
     style={{
       backgroundColor: colors.blueDark,
       width: '100%',
     }}
-    bottom
   >
     <div
       style={{
@@ -19,7 +17,7 @@ const Header = () => (
         <Text size="beta" color="gray5">webRDFS client</Text>
       </Spacing>
     </div>
-  </Spacing>
+  </div>
 );
 
 export default Header;

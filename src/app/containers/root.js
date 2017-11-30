@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
-import { Spacing } from 'react-elemental';
+import { LoadingBar, Spacing } from 'react-elemental';
 import Header from 'app/components/header';
 import Sidebar from 'app/components/sidebar';
 import BodyContainer from 'app/containers/body';
 
 class RootContainer extends Component {
-  state = { selectedOp: null };
+  state = { selectedOp: null, isLoading: false };
 
   setSelectedOp = (op) => this.setState({ selectedOp: op });
 
+  setIsLoading = (isLoading) => this.setState({ isLoading });
+
   render() {
-    const { selectedOp } = this.state;
+    const { selectedOp, isLoading } = this.state;
 
     return (
       <div>
-        <Header />
+        <Spacing size="large" bottom>
+          <Header />
+          {isLoading && <LoadingBar />}
+        </Spacing>
 
         <Spacing size="huge" left right style={{ display: 'flex' }}>
           <div>
@@ -27,7 +32,10 @@ class RootContainer extends Component {
           </div>
 
           <div style={{ flexGrow: 1 }}>
-            <BodyContainer selectedOp={selectedOp} />
+            <BodyContainer
+              selectedOp={selectedOp}
+              setIsLoading={this.setIsLoading}
+            />
           </div>
         </Spacing>
       </div>

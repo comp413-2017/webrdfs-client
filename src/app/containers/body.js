@@ -12,6 +12,7 @@ import resource from 'app/util/resource';
 class BodyContainer extends Component {
   static propTypes = {
     selectedOp: PropTypes.string,
+    setIsLoading: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -26,7 +27,15 @@ class BodyContainer extends Component {
     }
   }
 
-  makeRequest = (opts) => resource(opts, (err, resp) => this.setState({ resp }));
+  makeRequest = (opts) => {
+    const { setIsLoading } = this.props;
+
+    setIsLoading(true);
+    resource(opts, (err, resp) => {
+      this.setState({ resp });
+      setIsLoading(false);
+    });
+  };
 
   render() {
     const { selectedOp } = this.props;
