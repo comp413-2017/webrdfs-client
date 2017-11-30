@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 import { Alert, Text } from 'react-elemental';
 import Create from 'app/components/operations/create';
 import Mkdir from 'app/components/operations/mkdir';
+import Read from 'app/components/operations/read';
+import Rename from 'app/components/operations/rename';
 import {
   OP_CREATE,
   OP_MKDIR,
+  OP_READ,
+  OP_RENAME,
 } from 'app/util/operations';
 import resource from 'app/util/resource';
 
@@ -44,6 +48,8 @@ class BodyContainer extends Component {
     const opComponent = {
       [OP_CREATE]: <Create makeRequest={this.makeRequest} />,
       [OP_MKDIR]: <Mkdir makeRequest={this.makeRequest} />,
+      [OP_READ]: <Read makeRequest={this.makeRequest} />,
+      [OP_RENAME]: <Rename makeRequest={this.makeRequest} />,
     };
 
     const placeholder = (
