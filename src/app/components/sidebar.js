@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, Spacing } from 'react-elemental';
 import {
   OP_CREATE,
+  OP_DELETE,
   OP_MKDIR,
   OP_READ,
   OP_RENAME,
@@ -10,6 +11,7 @@ import {
 
 const OP_TEXT = {
   [OP_CREATE]: 'Create a file',
+  [OP_DELETE]: 'Delete a file',
   [OP_MKDIR]: 'Make a directory',
   [OP_READ]: 'Read a file',
   [OP_RENAME]: 'Rename a file',
