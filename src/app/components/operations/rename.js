@@ -16,7 +16,7 @@ class Rename extends Component {
 
     makeRequest({
       endpoint: `/webhdfs/v1${source}`,
-      method: 'GET',
+      method: 'PUT',
       qs: {
         op: 'RENAME',
         destination: dest,
