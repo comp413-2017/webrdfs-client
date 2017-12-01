@@ -28,8 +28,8 @@ class Delete extends Component {
 
     return (
       <Body
-        title={'Read'}
-        subtitle={'Read an existing RDFS file'}
+        title={'Delete'}
+        subtitle={'Delete an existing RDFS file'}
       >
         <Spacing bottom>
           <TextField
