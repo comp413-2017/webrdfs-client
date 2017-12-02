@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Alert, Text } from 'react-elemental';
+import { Alert, Spacing, Text } from 'react-elemental';
 import time from 'time-func';
 import Append from 'app/components/operations/append';
 import Create from 'app/components/operations/create';
@@ -9,6 +9,7 @@ import ListStatus from 'app/components/operations/list-status';
 import Mkdir from 'app/components/operations/mkdir';
 import Read from 'app/components/operations/read';
 import Rename from 'app/components/operations/rename';
+import Response from 'app/components/response';
 import {
   OP_CREATE,
   OP_DELETE,
@@ -83,11 +84,9 @@ class BodyContainer extends Component {
         )}
 
         {resp && (
-          <Alert
-            type="success"
-            title={'Request completed.'}
-            message={`Response: ${resp}`}
-          />
+          <Spacing bottom>
+            <Response resp={resp} />
+          </Spacing>
         )}
 
         {opComponent[selectedOp] || placeholder}
