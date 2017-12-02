@@ -29,7 +29,8 @@
     "react-dom": "^15.6.1",
     "react-elemental": "^0.0.7",
     "react-elemental-fonts": "^0.0.1",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "time-func": "^0.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
