@@ -16,7 +16,12 @@ const resource = ({ endpoint, method, qs = {}, body = null }, cb) =>
     },
     ...body && { body },
   })
-    .then((resp) => cb(null, resp))
+    .then((resp) => resp.text().then((respBody) => cb(null, {
+      headers: resp.headers,
+      status: resp.status,
+      statusText: resp.statusText,
+      body: respBody,
+    })))
     .catch((err) => cb(err));
 
 export default resource;
