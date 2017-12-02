@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Alert, Text } from 'react-elemental';
 import time from 'time-func';
+import Append from 'app/components/operations/append';
 import Create from 'app/components/operations/create';
 import Delete from 'app/components/operations/delete';
+import ListStatus from 'app/components/operations/list-status';
 import Mkdir from 'app/components/operations/mkdir';
 import Read from 'app/components/operations/read';
 import Rename from 'app/components/operations/rename';
@@ -13,6 +15,8 @@ import {
   OP_MKDIR,
   OP_READ,
   OP_RENAME,
+  OP_APPEND,
+  OP_LISTSTATUS,
 } from 'app/util/operations';
 import resource from 'app/util/resource';
 
@@ -56,6 +60,8 @@ class BodyContainer extends Component {
       [OP_MKDIR]: <Mkdir makeRequest={this.makeRequest} />,
       [OP_READ]: <Read makeRequest={this.makeRequest} />,
       [OP_RENAME]: <Rename makeRequest={this.makeRequest} />,
+      [OP_APPEND]: <Append makeRequest={this.makeRequest} />,
+      [OP_LISTSTATUS]: <ListStatus makeRequest={this.makeRequest} />,
     };
 
     const placeholder = (
