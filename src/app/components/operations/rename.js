@@ -12,7 +12,7 @@ class Rename extends Component {
   };
 
   handleSubmit = () => {
-    const { makeRequest, form: { source = '', dest = '' } } = this.props;
+    const { makeRequest, form: { source = '', dest = '', user = '' } } = this.props;
 
     makeRequest({
       endpoint: `/webhdfs/v1${source}`,
@@ -20,18 +20,28 @@ class Rename extends Component {
       qs: {
         op: 'RENAME',
         destination: dest,
+        'user.name': user,
       },
     });
   };
 
   render() {
-    const { handleChange, form: { source = '', dest = '' } } = this.props;
+    const { handleChange, form: { source = '', dest = '', user = '' } } = this.props;
 
     return (
       <Body
         title={'Rename'}
         subtitle={'Rename an existing RDFS file'}
       >
+        <Spacing bottom>
+          <TextField
+            label={'Username'}
+            sublabel={'Username of the user performing this operation'}
+            onChange={handleChange('user')}
+            value={user}
+          />
+        </Spacing>
+
         <Spacing bottom>
           <TextField
             label={'Source file'}
