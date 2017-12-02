@@ -12,25 +12,35 @@ class Read extends Component {
   };
 
   handleSubmit = () => {
-    const { makeRequest, form: { path = '' } } = this.props;
+    const { makeRequest, form: { path = '', user = '' } } = this.props;
 
     makeRequest({
       endpoint: `/webhdfs/v1${path}`,
       method: 'GET',
       qs: {
         op: 'OPEN',
+        'user.name': user,
       },
     });
   };
 
   render() {
-    const { handleChange, form: { path = '' } } = this.props;
+    const { handleChange, form: { path = '', user = '' } } = this.props;
 
     return (
       <Body
         title={'Read'}
         subtitle={'Read an existing RDFS file'}
       >
+        <Spacing bottom>
+          <TextField
+            label={'Username'}
+            sublabel={'Username of the user performing this operation'}
+            onChange={handleChange('user')}
+            value={user}
+          />
+        </Spacing>
+
         <Spacing bottom>
           <TextField
             label={'Path'}
