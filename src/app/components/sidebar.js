@@ -7,6 +7,8 @@ import {
   OP_MKDIR,
   OP_READ,
   OP_RENAME,
+  OP_APPEND,
+  OP_LISTSTATUS,
 } from 'app/util/operations';
 
 const OP_TEXT = {
@@ -15,6 +17,8 @@ const OP_TEXT = {
   [OP_MKDIR]: 'Make a directory',
   [OP_READ]: 'Read a file',
   [OP_RENAME]: 'Rename a file',
+  [OP_APPEND]: 'Append to a file',
+  [OP_LISTSTATUS]: 'List directory contents',
 };
 
 const Sidebar = ({ selectedOp, setSelectedOp }) => (
