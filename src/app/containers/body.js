@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Alert, Text } from 'react-elemental';
+import time from 'time-func';
 import Create from 'app/components/operations/create';
 import Delete from 'app/components/operations/delete';
 import Mkdir from 'app/components/operations/mkdir';
@@ -25,11 +26,12 @@ class BodyContainer extends Component {
     selectedOp: null,
   };
 
-  state = { resp: null };
+  state = { resp: null, duration: null };
 
   componentDidUpdate(prevProps) {
     if (this.props.selectedOp !== prevProps.selectedOp) {
-      this.setState({ resp: null });  // eslint-disable-line react/no-did-update-set-state
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({ resp: null, duration: null });
     }
   }
 
@@ -37,15 +39,16 @@ class BodyContainer extends Component {
     const { setIsLoading } = this.props;
 
     setIsLoading(true);
-    resource(opts, (err, resp) => {
+    time((done) => resource(opts, (err, resp) => {
       this.setState({ resp });
       setIsLoading(false);
-    });
+      done();
+    }), (ret, duration) => this.setState({ duration }));
   };
 
   render() {
     const { selectedOp } = this.props;
-    const { resp } = this.state;
+    const { resp, duration } = this.state;
 
     const opComponent = {
       [OP_CREATE]: <Create makeRequest={this.makeRequest} />,
@@ -65,6 +68,14 @@ class BodyContainer extends Component {
 
     return (
       <div>
+        {duration && (
+          <Alert
+            type="info"
+            title="Request timing."
+            message={`Round-trip request duration is ${duration} ms.`}
+          />
+        )}
+
         {resp && (
           <Alert
             type="success"
