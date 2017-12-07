@@ -14,14 +14,26 @@ class Append extends Component {
   handleSubmit = () => {
     const { makeRequest, form: { path = '', user = '' } } = this.props;
 
+    const fd = new FormData();
+    fd.append('file', this.state.file);
     makeRequest({
       endpoint: `/webhdfs/v1${path}`,
       method: 'POST',
+      body: fd,
       qs: {
         op: 'APPEND',
         'user.name': user,
       },
     });
+  };
+
+  handleFileUpload = (event) => {
+    const fileReader = new FileReader();
+    const raw = event.target.files[0];
+    fileReader.readAsDataURL(raw);
+    fileReader.onload = () => {
+      this.setState({ file: fileReader.result });
+    };
   };
 
   render() {
@@ -38,6 +50,13 @@ class Append extends Component {
             sublabel={'Username of the user performing this operation'}
             onChange={handleChange('user')}
             value={user}
+          />
+        </Spacing>
+
+        <Spacing bottom>
+          <input
+            onChange={this.handleFileUpload}
+            type="file"
           />
         </Spacing>
 
