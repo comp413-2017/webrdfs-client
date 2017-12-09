@@ -30,7 +30,7 @@ class Append extends Component {
   handleFileUpload = (event) => {
     const fileReader = new FileReader();
     const raw = event.target.files[0];
-    fileReader.readAsDataURL(raw);
+    fileReader.readAsText(raw);
     fileReader.onload = () => {
       this.setState({ file: fileReader.result });
     };
