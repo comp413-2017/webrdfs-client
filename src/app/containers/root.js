@@ -18,7 +18,7 @@ class RootContainer extends Component {
       <div>
         <Spacing size="large" bottom>
           <Header />
-          {isLoading && <LoadingBar />}
+          {isLoading && <LoadingBar position="absolute" />}
         </Spacing>
 
         <Spacing size="huge" left right style={{ display: 'flex' }}>
