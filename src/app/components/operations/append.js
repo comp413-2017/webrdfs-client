@@ -42,7 +42,6 @@ class Append extends Component {
         title={'Append'}
         subtitle={'Append a string an existing RDFS file'}
       >
-
         <Spacing bottom>
           <input
             onChange={this.handleFileUpload}

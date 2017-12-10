@@ -31,7 +31,6 @@ class Read extends Component {
         title={'Read'}
         subtitle={'Read an existing RDFS file'}
       >
-
         <Spacing bottom>
           <TextField
             label={'Path'}

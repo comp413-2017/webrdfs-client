@@ -31,7 +31,6 @@ class Delete extends Component {
         title={'Delete'}
         subtitle={'Delete an existing RDFS file'}
       >
-
         <Spacing bottom>
           <TextField
             label={'Path'}

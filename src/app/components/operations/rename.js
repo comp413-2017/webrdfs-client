@@ -32,7 +32,6 @@ class Rename extends Component {
         title={'Rename'}
         subtitle={'Rename an existing RDFS file'}
       >
-
         <Spacing bottom>
           <TextField
             label={'Source file'}

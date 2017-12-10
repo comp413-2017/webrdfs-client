@@ -31,7 +31,6 @@ class Create extends Component {
         title={'Create'}
         subtitle={'Create a new file in RDFS'}
       >
-
         <Spacing bottom>
           <TextField
             label={'Path'}
