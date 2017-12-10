@@ -42,34 +42,37 @@ class Append extends Component {
         title={'Append'}
         subtitle={'Append a string an existing RDFS file'}
       >
-        <Spacing bottom>
-          <Spacing size="small" bottom>
-            <Text size="kilo" color="gray50" uppercase bold>
-              File upload
-            </Text>
-            <Text size="lambda" color="gray25">
-              Select a file whose contents should be appended
-            </Text>
+        <form>
+          <Spacing bottom>
+            <Spacing size="small" bottom>
+              <Text size="kilo" color="gray50" uppercase bold>
+                File upload
+              </Text>
+              <Text size="lambda" color="gray25">
+                Select a file whose contents should be appended
+              </Text>
+            </Spacing>
+            <input
+              onChange={this.handleFileUpload}
+              type="file"
+            />
           </Spacing>
-          <input
-            onChange={this.handleFileUpload}
-            type="file"
-          />
-        </Spacing>
 
-        <Spacing bottom>
-          <TextField
-            label={'Path'}
-            sublabel={'Path to an existing file to append contents to'}
-            onChange={handleChange('path')}
-            value={path}
-          />
-        </Spacing>
+          <Spacing bottom>
+            <TextField
+              label={'Path'}
+              sublabel={'Path to an existing file to append contents to'}
+              onChange={handleChange('path')}
+              value={path}
+            />
+          </Spacing>
 
-        <Button
-          text={'Submit'}
-          onClick={this.handleSubmit}
-        />
+          <Button
+            type="submit"
+            text={'Submit'}
+            onClick={this.handleSubmit}
+          />
+        </form>
       </Body>
     );
   }

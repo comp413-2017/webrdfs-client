@@ -31,19 +31,22 @@ class ListStatus extends Component {
         title={'List Status'}
         subtitle={'List the contents of a directory within RDFS'}
       >
-        <Spacing bottom>
-          <TextField
-            label={'Path'}
-            sublabel={'Path to a directory'}
-            onChange={handleChange('path')}
-            value={path}
-          />
-        </Spacing>
+        <form>
+          <Spacing bottom>
+            <TextField
+              label={'Path'}
+              sublabel={'Path to a directory'}
+              onChange={handleChange('path')}
+              value={path}
+            />
+          </Spacing>
 
-        <Button
-          text={'Submit'}
-          onClick={this.handleSubmit}
-        />
+          <Button
+            type="submit"
+            text={'Submit'}
+            onClick={this.handleSubmit}
+          />
+        </form>
       </Body>
     );
   }

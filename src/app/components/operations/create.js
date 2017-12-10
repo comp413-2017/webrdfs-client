@@ -31,19 +31,22 @@ class Create extends Component {
         title={'Create'}
         subtitle={'Create a new file in RDFS'}
       >
-        <Spacing bottom>
-          <TextField
-            label={'Path'}
-            sublabel={'Path within the filesystem to create a new file'}
-            onChange={handleChange('path')}
-            value={path}
-          />
-        </Spacing>
+        <form>
+          <Spacing bottom>
+            <TextField
+              label={'Path'}
+              sublabel={'Path within the filesystem to create a new file'}
+              onChange={handleChange('path')}
+              value={path}
+            />
+          </Spacing>
 
-        <Button
-          text={'Submit'}
-          onClick={this.handleSubmit}
-        />
+          <Button
+            type="submit"
+            text={'Submit'}
+            onClick={this.handleSubmit}
+          />
+        </form>
       </Body>
     );
   }
