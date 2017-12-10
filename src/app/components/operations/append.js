@@ -13,13 +13,12 @@ class Append extends Component {
 
   handleSubmit = () => {
     const { makeRequest, form: { path = '', user = '' } } = this.props;
+    const { file: text } = this.state;
 
-    const fd = new FormData();
-    fd.append('file', this.state.file);
     makeRequest({
       endpoint: `/webhdfs/v1${path}`,
       method: 'POST',
-      body: fd,
+      body: text,
       qs: {
         op: 'APPEND',
         'user.name': user,
