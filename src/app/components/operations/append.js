@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Spacing, TextField } from 'react-elemental';
+import { Button, Spacing, Text, TextField } from 'react-elemental';
 import Body from 'app/components/body';
 import withForm from 'app/hoc/with-form';
 
@@ -43,6 +43,14 @@ class Append extends Component {
         subtitle={'Append a string an existing RDFS file'}
       >
         <Spacing bottom>
+          <Spacing size="small" bottom>
+            <Text size="kilo" color="gray50" uppercase bold>
+              File upload
+            </Text>
+            <Text size="lambda" color="gray25">
+              Select a file whose contents should be appended
+            </Text>
+          </Spacing>
           <input
             onChange={this.handleFileUpload}
             type="file"
