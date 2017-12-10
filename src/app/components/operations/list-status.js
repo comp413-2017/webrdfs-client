@@ -24,22 +24,13 @@ class ListStatus extends Component {
   };
 
   render() {
-    const { handleChange, form: { path = '', user = '' } } = this.props;
+    const { handleChange, form: { path = '' } } = this.props;
 
     return (
       <Body
         title={'List Status'}
         subtitle={'List the contents of a directory within RDFS'}
       >
-        <Spacing bottom>
-          <TextField
-            label={'Username'}
-            sublabel={'Username of the user performing this operation'}
-            onChange={handleChange('user')}
-            value={user}
-          />
-        </Spacing>
-
         <Spacing bottom>
           <TextField
             label={'Path'}
