@@ -12,35 +12,25 @@ class Delete extends Component {
   };
 
   handleSubmit = () => {
-    const { makeRequest, form: { path = '', user = '' } } = this.props;
+    const { makeRequest, form: { path = '' } } = this.props;
 
     makeRequest({
       endpoint: `/webhdfs/v1${path}`,
       method: 'DELETE',
       qs: {
         op: 'DELETE',
-        'user.name': user,
       },
     });
   };
 
   render() {
-    const { handleChange, form: { path = '', user = '' } } = this.props;
+    const { handleChange, form: { path = '' } } = this.props;
 
     return (
       <Body
         title={'Delete'}
         subtitle={'Delete an existing RDFS file'}
       >
-        <Spacing bottom>
-          <TextField
-            label={'Username'}
-            sublabel={'Username of the user performing this operation'}
-            onChange={handleChange('user')}
-            value={user}
-          />
-        </Spacing>
-
         <Spacing bottom>
           <TextField
             label={'Path'}
