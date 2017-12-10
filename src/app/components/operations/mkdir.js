@@ -31,19 +31,22 @@ class Mkdir extends Component {
         title={'Mkdir'}
         subtitle={'Create a new directory in RDFS'}
       >
-        <Spacing bottom>
-          <TextField
-            label={'Path'}
-            sublabel={'Path within the filesystem to create a new directory'}
-            onChange={handleChange('path')}
-            value={path}
-          />
-        </Spacing>
+        <form>
+          <Spacing bottom>
+            <TextField
+              label={'Path'}
+              sublabel={'Path within the filesystem to create a new directory'}
+              onChange={handleChange('path')}
+              value={path}
+            />
+          </Spacing>
 
-        <Button
-          text={'Submit'}
-          onClick={this.handleSubmit}
-        />
+          <Button
+            type="submit"
+            text={'Submit'}
+            onClick={this.handleSubmit}
+          />
+        </form>
       </Body>
     );
   }

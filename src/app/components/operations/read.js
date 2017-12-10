@@ -31,19 +31,22 @@ class Read extends Component {
         title={'Read'}
         subtitle={'Read an existing RDFS file'}
       >
-        <Spacing bottom>
-          <TextField
-            label={'Path'}
-            sublabel={'Path to the file'}
-            onChange={handleChange('path')}
-            value={path}
-          />
-        </Spacing>
+        <form>
+          <Spacing bottom>
+            <TextField
+              label={'Path'}
+              sublabel={'Path to the file'}
+              onChange={handleChange('path')}
+              value={path}
+            />
+          </Spacing>
 
-        <Button
-          text={'Submit'}
-          onClick={this.handleSubmit}
-        />
+          <Button
+            type="submit"
+            text={'Submit'}
+            onClick={this.handleSubmit}
+          />
+        </form>
       </Body>
     );
   }

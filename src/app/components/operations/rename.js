@@ -32,28 +32,31 @@ class Rename extends Component {
         title={'Rename'}
         subtitle={'Rename an existing RDFS file'}
       >
-        <Spacing bottom>
-          <TextField
-            label={'Source file'}
-            sublabel={'Path to the file to rename'}
-            onChange={handleChange('source')}
-            value={source}
-          />
-        </Spacing>
+        <form>
+          <Spacing bottom>
+            <TextField
+              label={'Source file'}
+              sublabel={'Path to the file to rename'}
+              onChange={handleChange('source')}
+              value={source}
+            />
+          </Spacing>
 
-        <Spacing bottom>
-          <TextField
-            label={'Destination file'}
-            sublabel={'Path to the target destination file'}
-            onChange={handleChange('dest')}
-            value={dest}
-          />
-        </Spacing>
+          <Spacing bottom>
+            <TextField
+              label={'Destination file'}
+              sublabel={'Path to the target destination file'}
+              onChange={handleChange('dest')}
+              value={dest}
+            />
+          </Spacing>
 
-        <Button
-          text={'Submit'}
-          onClick={this.handleSubmit}
-        />
+          <Button
+            type="submit"
+            text={'Submit'}
+            onClick={this.handleSubmit}
+          />
+        </form>
       </Body>
     );
   }
