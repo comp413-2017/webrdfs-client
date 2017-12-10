@@ -12,7 +12,7 @@ class Append extends Component {
   };
 
   handleSubmit = () => {
-    const { makeRequest, form: { path = '', user = '' } } = this.props;
+    const { makeRequest, form: { path = '' } } = this.props;
     const { file: text } = this.state;
 
     makeRequest({
@@ -21,7 +21,6 @@ class Append extends Component {
       body: text,
       qs: {
         op: 'APPEND',
-        'user.name': user,
       },
     });
   };
@@ -36,21 +35,13 @@ class Append extends Component {
   };
 
   render() {
-    const { handleChange, form: { path = '', user = '' } } = this.props;
+    const { handleChange, form: { path = '' } } = this.props;
 
     return (
       <Body
         title={'Append'}
         subtitle={'Append a string an existing RDFS file'}
       >
-        <Spacing bottom>
-          <TextField
-            label={'Username'}
-            sublabel={'Username of the user performing this operation'}
-            onChange={handleChange('user')}
-            value={user}
-          />
-        </Spacing>
 
         <Spacing bottom>
           <input
