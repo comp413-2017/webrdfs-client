@@ -36,9 +36,11 @@ const Response = ({ resp: { headers, status, statusText, body } }) => (
       ))}
     </Spacing>
 
-    <Text color={colors.green}>
-      {body}
-    </Text>
+    {(Array.isArray(body) ? body : [body]).map((line) => (
+      <Text key={line} color={colors.green} style={{ whiteSpace: 'pre' }} secondary>
+        {line}
+      </Text>
+    ))}
   </Spacing>
 );
 
@@ -47,7 +49,10 @@ Response.propTypes = {
     headers: PropTypes.object.isRequired,
     status: PropTypes.number.isRequired,
     statusText: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired,
+    body: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+    ]).isRequired,
   }).isRequired,
 };
 

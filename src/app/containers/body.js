@@ -21,6 +21,8 @@ import {
 } from 'app/util/operations';
 import resource from 'app/util/resource';
 
+const identity = (val) => val;
+
 class BodyContainer extends Component {
   static propTypes = {
     selectedOp: PropTypes.string,
@@ -41,11 +43,12 @@ class BodyContainer extends Component {
   }
 
   makeRequest = (opts) => {
+    const { transform = identity, ...resourceOpts } = opts;
     const { setIsLoading } = this.props;
 
     setIsLoading(true);
-    time((done) => resource(opts, (err, resp) => {
-      this.setState({ resp });
+    time((done) => resource(resourceOpts, (err, resp) => {
+      this.setState({ resp: transform(resp) });
       setIsLoading(false);
       done();
     }), (ret, duration) => this.setState({ duration }));
