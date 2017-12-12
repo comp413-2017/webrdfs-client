@@ -24,6 +24,7 @@
     "test"
   ],
   "dependencies": {
+    "humanize": "^0.0.9",
     "prop-types": "^15.6.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

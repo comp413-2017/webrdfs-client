@@ -1,8 +1,35 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Spacing, TextField } from 'react-elemental';
+import humanize from 'humanize';
 import Body from 'app/components/body';
 import withForm from 'app/hoc/with-form';
+
+const safeParseJSON = (text) => {
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    return null;
+  }
+};
+
+// Format the response body as a list rather than a raw JSON object
+const respTransform = ({ body, ...resp } = {}) => {
+  const json = safeParseJSON(body);
+  if (!json) {
+    return { ...resp, body };
+  }
+
+  const { FileStatuses: { FileStatus: list } } = json;
+
+  const formattedBody = list.map(({ modificationTime, length, path }) => [
+    path,
+    length,
+    `Modified ${humanize.relativeTime(modificationTime / 1000)}`,
+  ].join('    '));
+
+  return { ...resp, body: list.length > 0 ? formattedBody : '(Empty directory)' };
+};
 
 class ListStatus extends Component {
   static propTypes = {
@@ -20,6 +47,7 @@ class ListStatus extends Component {
       qs: {
         op: 'LISTSTATUS',
       },
+      transform: respTransform,
     });
   };
 
